@@ -6,7 +6,7 @@ var num = prompt("How many songs do you want?")
 num = Math.floor(num)
 
 singer = encodeURIComponent(singer.trim())
-var url = 'http://www.songsterr.com/a/ra/songs/byartists.json?artists=' + singer;
+var url = 'https://www.songsterr.com/a/ra/songs/byartists.json?artists=' + singer;
 console.log(url)
 var comma = s.search(',')
 
