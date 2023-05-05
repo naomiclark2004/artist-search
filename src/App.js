@@ -69,22 +69,36 @@ function Body({ error, isLoaded, result }) {
   } else if (!isLoaded) {
     return <>loading...</>;
   } else {
+    console.log(result)
     return <>
       {result.map((item, index) => {
-        //find artist in data array
+        console.log(item)
         if (index < num) {
-          if (item.artist.name === s) {
+          if (item.artist.name === s || item.artist.nameWithoutThePrefix === s) {
             //later: limit number of songs listed to 10
             return (
               <li key={item.id}>
                 {item.title}
               </li>
             )
+          } else {
+            var arr = s.split(" ");
+            for (var i = 0; i < arr.length; i++) {
+              arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase();
+
+              const str2 = arr.join(" ");
+              if (item.artist.name === str2 || item.artist.nameWithoutThePrefix === str2) {
+                return (
+                  <li key={item.id}>
+                    {item.title}
+                  </li>
+                )
+              }
+          }
           }
         }
       })}
     </>
   }
 }
-
 export default App;
